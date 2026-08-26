@@ -70,7 +70,7 @@
 
     // 5. Teks Subtitle
     const subText = new PIXI.Text({
-        text: "Ari ma'shum | 2026",
+        text: "Ari ma'shum",
         style: {
             fontFamily: 'serif',
             fontSize: 14,

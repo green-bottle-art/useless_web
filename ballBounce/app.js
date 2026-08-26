@@ -68,16 +68,6 @@
     titleText.y = app.screen.height / 2 + 130;
     app.stage.addChild(titleText);
 
-    // 5. Teks Subtitle
-    const subText = new PIXI.Text({
-        text: "Ari ma'shum",
-        style: {
-            fontFamily: 'serif',
-            fontSize: 14,
-            fill: 0x000000,
-            align: 'center',
-        }
-    });
     subText.anchor.set(0.5);
     subText.x = app.screen.width / 2;
     subText.y = app.screen.height / 2 + 350;

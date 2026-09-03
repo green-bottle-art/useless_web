@@ -1,6 +1,6 @@
 import { Application, Text, Graphics} from "pixijs";
 import { createRoot } from 'react-dom/client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Children } from 'react';
 import { contain } from "three/src/extras/TextureUtils.js";
 
 function PixiCanvas({scene, onGameOver}) {
@@ -34,8 +34,15 @@ function PixiCanvas({scene, onGameOver}) {
 
     initPixi();
 
-    
-  })
+    // cleanup
+    return() => {
+      isMounted = false;
+      if (appRef.current) {
+        appRef.current.destroy(true, {children: true});
+        appRef.current = null;
+      }
+    };
+  }, [])
 }
 
 const domNode = document.getElementById('app');

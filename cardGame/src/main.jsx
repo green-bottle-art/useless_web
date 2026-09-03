@@ -1,7 +1,7 @@
 import { Application, Text, Graphics} from "pixijs";
 import { createRoot } from 'react-dom/client';
-import React, { useState, useEffect, useRef, Children } from 'react';
-import { contain } from "three/src/extras/TextureUtils.js";
+import React, { useState, useEffect, useRef} from 'react';
+
 
 function PixiCanvas({scene, onGameOver}) {
   const containerRef = useRef(null);
@@ -63,7 +63,7 @@ function PixiCanvas({scene, onGameOver}) {
       });
       title.x = 240;
       title.y = 250;
-      app.stage.appendChild(title);
+      app.stage.addChild(title);
     } else if (currentScene === 'game') {
 
       const square = new Graphics();
@@ -89,7 +89,9 @@ function PixiCanvas({scene, onGameOver}) {
 
       app.stage.addChild(square);
       app.stage.addChild(hint);
+
     } else if (currentScene === 'gameover') {
+      
       const text = new Text({
         text: 'GAME OVER (PIXI)',
         style: { fill: 0xf38ba8, fontSize: 36 },
@@ -110,23 +112,23 @@ function App() {
   const [scene, setScene] = useState('menu');
 
   return (
-    <div style={styles.wrapper}>
-      <h1 style={{ color: '#cdd6f4', margin: '0 0 10px 0' }}>React Scene Manager</h1>
+    <div className="wrapper">
+      <h1>React Scene Manager</h1>
 
       {/* OVERLAY UI REACT (Navigasi / Tombol) */}
-      <div style={styles.uiOverlay}>
+      <div className="uiOverlay">
         {scene === 'menu' && (
-          <button style={styles.btnPrimary} onClick={() => setScene('game')}>
+          <button className="btnPrimary" onClick={() => setScene('game')}>
             Start Game
           </button>
         )}
 
         {scene === 'game' && (
           <div>
-            <button style={styles.btnDanger} onClick={() => setScene('gameover')}>
+            <button className="btnDanger" onClick={() => setScene('gameover')}>
               Trigger Game Over
             </button>
-            <button style={styles.btnSecondary} onClick={() => setScene('menu')}>
+            <button className="btnSecondary" onClick={() => setScene('menu')}>
               Kembali ke Menu
             </button>
           </div>
@@ -134,10 +136,10 @@ function App() {
 
         {scene === 'gameover' && (
           <div>
-            <button style={styles.btnPrimary} onClick={() => setScene('game')}>
+            <button className="btnPrimary" onClick={() => setScene('game')}>
               Main Lagi
             </button>
-            <button style={styles.btnSecondary} onClick={() => setScene('menu')}>
+            <button className="btnSecondary" onClick={() => setScene('menu')}>
               Main Menu
             </button>
           </div>

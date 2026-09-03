@@ -65,15 +65,42 @@ function PixiCanvas({scene, onGameOver}) {
       title.y = 250;
       app.stage.appendChild(title);
     } else if (currentScene === 'game') {
+
       const square = new Graphics();
       square.rect(0, 0, 100, 100);
       square.fill(0xa6e3a1);
+
       square.x = 350;
       square.y = 220;
+
       square.eventMode = 'static';
       square.cursor = 'pointer';
+      
+      square.on('pointerdown', () => {
+        onGameOver();
+      });
+
+      const hint = new Text({
+        text: 'Klik kotak hijau untuk mati/Game Over',
+        style: { fill: 0xffffff, fontSize: 18 },
+      });
+      hint.x = 230;
+      hint.y = 350;
+
+      app.stage.addChild(square);
+      app.stage.addChild(hint);
+    } else if (currentScene === 'gameover') {
+      const text = new Text({
+        text: 'GAME OVER (PIXI)',
+        style: { fill: 0xf38ba8, fontSize: 36 },
+      });
+      text.x = 260;
+      text.y = 250;
+      app.stage.addChild(text);
     }
   }
+
+  return <div ref={containerRef} style={{ borderRadius: '8px', overflow: 'hidden' }} />;
 
 }
 

@@ -1,0 +1,19 @@
+{
+  "name": "my-game-projects",
+  "private": true,
+  "workspaces": [
+    "ballBounce",
+    "cardGame"
+  ],
+  "scripts": {
+    "dev:ball": "npm run dev --workspace=ballBounce",
+    "dev:card": "npm run dev --workspace=cardGame"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^9.23.0",
+    "phaser": "^4.2.1",
+    "pixijs": "^7.1.4",
+    "three": "^0.185.1",
+    "vite": "^8.2.2"
+  }
+}

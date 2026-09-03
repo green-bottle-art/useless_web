@@ -54,8 +54,27 @@ function PixiCanvas({scene, onGameOver}) {
     }
   }, [scene]);
   
-  
-  
+  // fungsi dravv 
+  function renderScene(app, currentScene) {
+    if (currentScene === 'menu') {
+      const title = new Text({
+        text: 'Menu',
+        style: {fill: 0x89b4fa, fontSize: 28 },
+      });
+      title.x = 240;
+      title.y = 250;
+      app.stage.appendChild(title);
+    } else if (currentScene === 'game') {
+      const square = new Graphics();
+      square.rect(0, 0, 100, 100);
+      square.fill(0xa6e3a1);
+      square.x = 350;
+      square.y = 220;
+      square.eventMode = 'static';
+      square.cursor = 'pointer';
+    }
+  }
+
 }
 
 const domNode = document.getElementById('app');

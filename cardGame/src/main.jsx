@@ -27,7 +27,14 @@ function PixiCanvas({scene, onGameOver}) {
         containerRef.current.appendChild(app.canvas);
       }
       appRef.current = app;
+
+      // Render
+      renderScene(app, scene);
     }
+
+    initPixi();
+
+    
   })
 }
 

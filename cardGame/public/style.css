@@ -18,7 +18,7 @@ body {
     margin: 0 0 10px 0;
  }
 
-  wrapper {
+  .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,13 +28,13 @@ body {
     font-family: 'sans-serif';
   }
 
-  uiOverlay {
+  .uiOverlay {
     margin-bottom: 15px;
     display: 'flex';
     gap: '10px';
   }
 
-  btnPrimary {
+  .btnPrimary {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -44,7 +44,7 @@ body {
     font-weight: bold;
   }
 
-  btnDanger {
+  .btnDanger {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -55,7 +55,7 @@ body {
     margin-right: 10px;
   }
 
-  btnSecondary {
+  .btnSecondary {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;

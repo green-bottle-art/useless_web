@@ -1,4 +1,4 @@
-import { Application, Text, Graphics} from "pixijs";
+import { Application, Text, Graphics} from "pixi.js";
 import { createRoot } from 'react-dom/client';
 import React, { useState, useEffect, useRef} from 'react';
 

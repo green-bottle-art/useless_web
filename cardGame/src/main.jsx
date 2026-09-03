@@ -42,7 +42,20 @@ function PixiCanvas({scene, onGameOver}) {
         appRef.current = null;
       }
     };
-  }, [])
+  }, []) 
+
+
+  // Update
+  useEffect(() => {
+    const app = appRef.current;
+    if (app && app.stage) {
+      app.stage.removeChildren();
+      renderScene(app, scene);
+    }
+  }, [scene]);
+  
+  
+  
 }
 
 const domNode = document.getElementById('app');

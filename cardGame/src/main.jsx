@@ -15,8 +15,9 @@ function PixiCanvas({scene, onGameOver}) {
 
     async function initPixi() {
       await app.init({
-        width: 800,
-        height: 600,
+        resizeTo: window,
+        resolution: window.devicePixelRatio || 1,
+        autoDensity: true,
         backgroundColor: 0x1e1e2e,
       });
 
@@ -56,22 +57,27 @@ function PixiCanvas({scene, onGameOver}) {
   
   // fungsi dravv 
   function renderScene(app, currentScene) {
+
+    const screenWidth = app.screen.width;
+    const screenHeight = app.screen.height;
+
     if (currentScene === 'menu') {
       const title = new Text({
         text: 'Menu',
         style: {fill: 0x89b4fa, fontSize: 28 },
       });
-      title.x = 240;
-      title.y = 250;
+      title.anchor.set(0.5);
+      title.x = screenWidth / 2;
+      title.y = screenHeight / 2;
       app.stage.addChild(title);
     } else if (currentScene === 'game') {
 
       const square = new Graphics();
-      square.rect(0, 0, 100, 100);
+      square.rect(-50, -50, 100, 100);
       square.fill(0xa6e3a1);
 
-      square.x = 350;
-      square.y = 220;
+      square.x = screenWidth / 2;
+      square.y = screenHeight / 2 - 20;
 
       square.eventMode = 'static';
       square.cursor = 'pointer';
@@ -84,8 +90,9 @@ function PixiCanvas({scene, onGameOver}) {
         text: 'Klik kotak hijau untuk mati/Game Over',
         style: { fill: 0xffffff, fontSize: 18 },
       });
-      hint.x = 230;
-      hint.y = 350;
+      hint.anchor.set(0.5);
+      hint.x = screenWidth / 2;
+      hint.y = screenHeight / 2 + 80;
 
       app.stage.addChild(square);
       app.stage.addChild(hint);
@@ -96,8 +103,10 @@ function PixiCanvas({scene, onGameOver}) {
         text: 'GAME OVER (PIXI)',
         style: { fill: 0xf38ba8, fontSize: 36 },
       });
-      text.x = 260;
-      text.y = 250;
+      text.anchor.set(0.5);
+      text.x = screenWidth / 2;
+      text.y = screenHeight / 2;
+      app.stage.addChild(text);
       app.stage.addChild(text);
     }
   }

@@ -11,9 +11,16 @@
   },
   "dependencies": {
     "@babylonjs/core": "^9.23.0",
+    "node-gyp": "^13.0.2",
     "phaser": "^4.2.1",
     "pixijs": "^7.1.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "rebuild": "^0.1.2",
     "three": "^0.185.1",
     "vite": "^8.2.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1"
   }
 }

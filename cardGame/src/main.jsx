@@ -104,6 +104,52 @@ function PixiCanvas({scene, onGameOver}) {
 
 }
 
+// State
+function App() {
+  // State kontrol
+  const [scene, setScene] = useState('menu');
+
+  return (
+    <div style={styles.wrapper}>
+      <h1 style={{ color: '#cdd6f4', margin: '0 0 10px 0' }}>React Scene Manager</h1>
+
+      {/* OVERLAY UI REACT (Navigasi / Tombol) */}
+      <div style={styles.uiOverlay}>
+        {scene === 'menu' && (
+          <button style={styles.btnPrimary} onClick={() => setScene('game')}>
+            Start Game
+          </button>
+        )}
+
+        {scene === 'game' && (
+          <div>
+            <button style={styles.btnDanger} onClick={() => setScene('gameover')}>
+              Trigger Game Over
+            </button>
+            <button style={styles.btnSecondary} onClick={() => setScene('menu')}>
+              Kembali ke Menu
+            </button>
+          </div>
+        )}
+
+        {scene === 'gameover' && (
+          <div>
+            <button style={styles.btnPrimary} onClick={() => setScene('game')}>
+              Main Lagi
+            </button>
+            <button style={styles.btnSecondary} onClick={() => setScene('menu')}>
+              Main Menu
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* PIXI CANVAS (RENDERER) */}
+      <PixiCanvas scene={scene} onGameOver={() => setScene('gameover')} />
+    </div>
+  );
+}
+
 const domNode = document.getElementById('app');
 const root = createRoot(domNode);
 root.render(<App />);

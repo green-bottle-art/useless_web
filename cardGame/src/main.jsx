@@ -1,6 +1,7 @@
 import { Application, Text, Graphics} from "pixijs";
 import { createRoot } from 'react-dom/client';
 import React, { useState, useEffect, useRef } from 'react';
+import { contain } from "three/src/extras/TextureUtils.js";
 
 function PixiCanvas({scene, onGameOver}) {
   const containerRef = useRef(null);
@@ -20,6 +21,12 @@ function PixiCanvas({scene, onGameOver}) {
       });
 
       if (!isMounted) return;
+
+      // menambahkan canvas ke DOM Reat
+      if (containerRef.current) {
+        containerRef.current.appendChild(app.canvas);
+      }
+      appRef.current = app;
     }
   })
 }
